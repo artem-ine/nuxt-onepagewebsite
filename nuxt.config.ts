@@ -12,7 +12,6 @@ export default defineNuxtConfig({
       routes: [
         {
           type: "home",
-          uid: "home",
           path: "/",
         },
         {
