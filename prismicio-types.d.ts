@@ -69,7 +69,7 @@ export type ArticleDocument<Lang extends string = string> =
     Lang
   >;
 
-type HomeDocumentDataSlicesSlice = AlternateGridSlice | HeroSlice;
+type HomeDocumentDataSlicesSlice = AlternateGridSlice;
 
 /**
  * Content for home documents
@@ -130,7 +130,44 @@ interface HomeDocumentData {
 export type HomeDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithoutUID<Simplify<HomeDocumentData>, "home", Lang>;
 
-export type AllDocumentTypes = ArticleDocument | HomeDocument;
+type NavigationDocumentDataSlicesSlice = NavbarSlice;
+
+/**
+ * Content for navigation documents
+ */
+interface NavigationDocumentData {
+  /**
+   * Slice Zone field in *navigation*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: navigation.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<NavigationDocumentDataSlicesSlice>;
+}
+
+/**
+ * navigation document from Prismic
+ *
+ * - **API ID**: `navigation`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type NavigationDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<NavigationDocumentData>,
+    "navigation",
+    Lang
+  >;
+
+export type AllDocumentTypes =
+  | ArticleDocument
+  | HomeDocument
+  | NavigationDocument;
 
 /**
  * Item in *AlternateGrid → Default → Primary → items*
@@ -342,51 +379,6 @@ export type AlternateGridSlice = prismic.SharedSlice<
 >;
 
 /**
- * Primary content in *ArticleHeadline → Default → Primary*
- */
-export interface ArticleHeadlineSliceDefaultPrimary {
-  /**
-   * article headline field in *ArticleHeadline → Default → Primary*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: article_headline.default.primary.article_headline
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  article_headline: prismic.KeyTextField;
-}
-
-/**
- * Default variation for ArticleHeadline Slice
- *
- * - **API ID**: `default`
- * - **Description**: Default
- * - **Documentation**: https://prismic.io/docs/slice
- */
-export type ArticleHeadlineSliceDefault = prismic.SharedSliceVariation<
-  "default",
-  Simplify<ArticleHeadlineSliceDefaultPrimary>,
-  never
->;
-
-/**
- * Slice variation for *ArticleHeadline*
- */
-type ArticleHeadlineSliceVariation = ArticleHeadlineSliceDefault;
-
-/**
- * ArticleHeadline Shared Slice
- *
- * - **API ID**: `article_headline`
- * - **Description**: ArticleHeadline
- * - **Documentation**: https://prismic.io/docs/slice
- */
-export type ArticleHeadlineSlice = prismic.SharedSlice<
-  "article_headline",
-  ArticleHeadlineSliceVariation
->;
-
-/**
  * Primary content in *ArticleContent → Default → Primary*
  */
 export interface ArticleTitleSliceDefaultPrimary {
@@ -462,174 +454,66 @@ export type ArticleTitleSlice = prismic.SharedSlice<
 >;
 
 /**
- * Primary content in *Hero → Default → Primary*
+ * Primary content in *Navbar → Default → Primary*
  */
-export interface HeroSliceDefaultPrimary {
+export interface NavbarSliceDefaultPrimary {
   /**
-   * eyebrowHeadline field in *Hero → Default → Primary*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: Eyebrow
-   * - **API ID Path**: hero.default.primary.eyebrowHeadline
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  eyebrowHeadline: prismic.KeyTextField;
-
-  /**
-   * title field in *Hero → Default → Primary*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: hero.default.primary.title
-   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
-   */
-  title: prismic.RichTextField;
-
-  /**
-   * description field in *Hero → Default → Primary*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: hero.default.primary.description
-   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
-   */
-  description: prismic.RichTextField;
-
-  /**
-   * image field in *Hero → Default → Primary*
-   *
-   * - **Field Type**: Image
-   * - **Placeholder**: *None*
-   * - **API ID Path**: hero.default.primary.image
-   * - **Documentation**: https://prismic.io/docs/field#image
-   */
-  image: prismic.ImageField<never>;
-
-  /**
-   * callToActionLabel field in *Hero → Default → Primary*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: hero.default.primary.callToActionLabel
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  callToActionLabel: prismic.KeyTextField;
-
-  /**
-   * callToActionLink field in *Hero → Default → Primary*
+   * first link field in *Navbar → Default → Primary*
    *
    * - **Field Type**: Link
    * - **Placeholder**: *None*
-   * - **API ID Path**: hero.default.primary.callToActionLink
+   * - **API ID Path**: navbar.default.primary.first_link
    * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
    */
-  callToActionLink: prismic.LinkField;
+  first_link: prismic.LinkField;
+
+  /**
+   * second link field in *Navbar → Default → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: navbar.default.primary.second_link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  second_link: prismic.LinkField;
+
+  /**
+   * third link field in *Navbar → Default → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: navbar.default.primary.third_link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  third_link: prismic.LinkField;
 }
 
 /**
- * Default variation for Hero Slice
+ * Default variation for Navbar Slice
  *
  * - **API ID**: `default`
  * - **Description**: Default
  * - **Documentation**: https://prismic.io/docs/slice
  */
-export type HeroSliceDefault = prismic.SharedSliceVariation<
+export type NavbarSliceDefault = prismic.SharedSliceVariation<
   "default",
-  Simplify<HeroSliceDefaultPrimary>,
+  Simplify<NavbarSliceDefaultPrimary>,
   never
 >;
 
 /**
- * Primary content in *Hero → Image Right → Primary*
+ * Slice variation for *Navbar*
  */
-export interface HeroSliceImageRightPrimary {
-  /**
-   * eyebrowHeadline field in *Hero → Image Right → Primary*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: Eyebrow
-   * - **API ID Path**: hero.imageRight.primary.eyebrowHeadline
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  eyebrowHeadline: prismic.KeyTextField;
-
-  /**
-   * title field in *Hero → Image Right → Primary*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: hero.imageRight.primary.title
-   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
-   */
-  title: prismic.RichTextField;
-
-  /**
-   * description field in *Hero → Image Right → Primary*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: hero.imageRight.primary.description
-   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
-   */
-  description: prismic.RichTextField;
-
-  /**
-   * image field in *Hero → Image Right → Primary*
-   *
-   * - **Field Type**: Image
-   * - **Placeholder**: *None*
-   * - **API ID Path**: hero.imageRight.primary.image
-   * - **Documentation**: https://prismic.io/docs/field#image
-   */
-  image: prismic.ImageField<never>;
-
-  /**
-   * callToActionLabel field in *Hero → Image Right → Primary*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: hero.imageRight.primary.callToActionLabel
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  callToActionLabel: prismic.KeyTextField;
-
-  /**
-   * callToActionLink field in *Hero → Image Right → Primary*
-   *
-   * - **Field Type**: Link
-   * - **Placeholder**: *None*
-   * - **API ID Path**: hero.imageRight.primary.callToActionLink
-   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
-   */
-  callToActionLink: prismic.LinkField;
-}
+type NavbarSliceVariation = NavbarSliceDefault;
 
 /**
- * Image Right variation for Hero Slice
+ * Navbar Shared Slice
  *
- * - **API ID**: `imageRight`
- * - **Description**: Default
+ * - **API ID**: `navbar`
+ * - **Description**: Navbar
  * - **Documentation**: https://prismic.io/docs/slice
  */
-export type HeroSliceImageRight = prismic.SharedSliceVariation<
-  "imageRight",
-  Simplify<HeroSliceImageRightPrimary>,
-  never
->;
-
-/**
- * Slice variation for *Hero*
- */
-type HeroSliceVariation = HeroSliceDefault | HeroSliceImageRight;
-
-/**
- * Hero Shared Slice
- *
- * - **API ID**: `hero`
- * - **Description**: Hero
- * - **Documentation**: https://prismic.io/docs/slice
- */
-export type HeroSlice = prismic.SharedSlice<"hero", HeroSliceVariation>;
+export type NavbarSlice = prismic.SharedSlice<"navbar", NavbarSliceVariation>;
 
 declare module "@prismicio/client" {
   interface CreateClient {
@@ -647,6 +531,9 @@ declare module "@prismicio/client" {
       HomeDocument,
       HomeDocumentData,
       HomeDocumentDataSlicesSlice,
+      NavigationDocument,
+      NavigationDocumentData,
+      NavigationDocumentDataSlicesSlice,
       AllDocumentTypes,
       AlternateGridSlice,
       AlternateGridSliceDefaultPrimaryItemsItem,
@@ -656,20 +543,14 @@ declare module "@prismicio/client" {
       AlternateGridSliceVariation,
       AlternateGridSliceDefault,
       AlternateGridSliceImageRight,
-      ArticleHeadlineSlice,
-      ArticleHeadlineSliceDefaultPrimary,
-      ArticleHeadlineSliceVariation,
-      ArticleHeadlineSliceDefault,
       ArticleTitleSlice,
       ArticleTitleSliceDefaultPrimary,
       ArticleTitleSliceVariation,
       ArticleTitleSliceDefault,
-      HeroSlice,
-      HeroSliceDefaultPrimary,
-      HeroSliceImageRightPrimary,
-      HeroSliceVariation,
-      HeroSliceDefault,
-      HeroSliceImageRight,
+      NavbarSlice,
+      NavbarSliceDefaultPrimary,
+      NavbarSliceVariation,
+      NavbarSliceDefault,
     };
   }
 }

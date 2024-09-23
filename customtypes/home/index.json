@@ -13,9 +13,6 @@
           "choices": {
             "alternate_grid": {
               "type": "SharedSlice"
-            },
-            "hero": {
-              "type": "SharedSlice"
             }
           }
         }
