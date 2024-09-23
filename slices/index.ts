@@ -7,6 +7,9 @@ export const components = defineSliceZoneComponents({
   alternate_grid: defineAsyncComponent(
     () => import("./AlternateGrid/index.vue"),
   ),
+  article_headline: defineAsyncComponent(
+    () => import("./ArticleHeadline/index.vue"),
+  ),
   article_title: defineAsyncComponent(
     () => import("./ArticleContent/index.vue"),
   ),

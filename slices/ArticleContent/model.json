@@ -35,6 +35,13 @@
             "constraint": {},
             "thumbnails": []
           }
+        },
+        "article_date": {
+          "type": "Date",
+          "config": {
+            "label": "article date",
+            "placeholder": ""
+          }
         }
       },
       "items": {}

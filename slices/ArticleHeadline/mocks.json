@@ -1,0 +1,14 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"article_headline": {
+				"__TYPE__": "FieldContent",
+				"value": "children",
+				"type": "Text"
+			}
+		},
+		"items": []
+	}
+]

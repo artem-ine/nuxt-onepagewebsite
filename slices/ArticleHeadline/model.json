@@ -1,0 +1,26 @@
+{
+  "id": "article_headline",
+  "type": "SharedSlice",
+  "name": "ArticleHeadline",
+  "description": "ArticleHeadline",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "article_headline": {
+          "type": "Text",
+          "config": {
+            "label": "article headline",
+            "placeholder": ""
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

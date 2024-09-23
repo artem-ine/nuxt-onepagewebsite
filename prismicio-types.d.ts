@@ -342,6 +342,51 @@ export type AlternateGridSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Primary content in *ArticleHeadline → Default → Primary*
+ */
+export interface ArticleHeadlineSliceDefaultPrimary {
+  /**
+   * article headline field in *ArticleHeadline → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: article_headline.default.primary.article_headline
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  article_headline: prismic.KeyTextField;
+}
+
+/**
+ * Default variation for ArticleHeadline Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ArticleHeadlineSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<ArticleHeadlineSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *ArticleHeadline*
+ */
+type ArticleHeadlineSliceVariation = ArticleHeadlineSliceDefault;
+
+/**
+ * ArticleHeadline Shared Slice
+ *
+ * - **API ID**: `article_headline`
+ * - **Description**: ArticleHeadline
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ArticleHeadlineSlice = prismic.SharedSlice<
+  "article_headline",
+  ArticleHeadlineSliceVariation
+>;
+
+/**
  * Primary content in *ArticleContent → Default → Primary*
  */
 export interface ArticleTitleSliceDefaultPrimary {
@@ -374,6 +419,16 @@ export interface ArticleTitleSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/field#image
    */
   article_image: prismic.ImageField<never>;
+
+  /**
+   * article date field in *ArticleContent → Default → Primary*
+   *
+   * - **Field Type**: Date
+   * - **Placeholder**: *None*
+   * - **API ID Path**: article_title.default.primary.article_date
+   * - **Documentation**: https://prismic.io/docs/field#date
+   */
+  article_date: prismic.DateField;
 }
 
 /**
@@ -601,6 +656,10 @@ declare module "@prismicio/client" {
       AlternateGridSliceVariation,
       AlternateGridSliceDefault,
       AlternateGridSliceImageRight,
+      ArticleHeadlineSlice,
+      ArticleHeadlineSliceDefaultPrimary,
+      ArticleHeadlineSliceVariation,
+      ArticleHeadlineSliceDefault,
       ArticleTitleSlice,
       ArticleTitleSliceDefaultPrimary,
       ArticleTitleSliceVariation,

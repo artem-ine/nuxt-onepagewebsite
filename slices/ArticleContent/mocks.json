@@ -41,6 +41,11 @@
 				"__TYPE__": "FieldContent",
 				"value": "forth",
 				"type": "Text"
+			},
+			"article_date": {
+				"__TYPE__": "FieldContent",
+				"type": "Date",
+				"value": "2024-04-15"
 			}
 		},
 		"items": []
