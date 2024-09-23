@@ -19,9 +19,10 @@ defineProps(
     :data-slice-variation="slice.variation"
     class="navbar"
   >
-<PrismicLink :field="slice.primary.first_link" class="link">Link</PrismicLink>
-<PrismicLink :field="slice.primary.second_link" class="link">Link</PrismicLink>
-<PrismicLink :field="slice.primary.third_link" class="link">Link</PrismicLink>
+  <PrismicLink :field="slice.primary.first_link" class="link">home</PrismicLink>
+  <PrismicLink :field="slice.primary.second_link" class="link">lorem ipsum</PrismicLink>
+  <PrismicLink :field="slice.primary.third_link" class="link">sed ut</PrismicLink>
+  <PrismicLink :field="slice.primary.fourth_link" class="link">at vero</PrismicLink>
   </section>
 </template>
 

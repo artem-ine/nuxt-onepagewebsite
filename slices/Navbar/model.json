@@ -38,6 +38,15 @@
             "allowTargetBlank": false,
             "select": null
           }
+        },
+        "fourth_link": {
+          "type": "Link",
+          "config": {
+            "label": "fourth link",
+            "placeholder": "",
+            "allowTargetBlank": false,
+            "select": null
+          }
         }
       },
       "items": {}

@@ -486,6 +486,16 @@ export interface NavbarSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
    */
   third_link: prismic.LinkField;
+
+  /**
+   * fourth link field in *Navbar → Default → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: navbar.default.primary.fourth_link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  fourth_link: prismic.LinkField;
 }
 
 /**
