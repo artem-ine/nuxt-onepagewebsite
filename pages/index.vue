@@ -7,7 +7,7 @@ const { data: page } = useAsyncData("[home]", () =>
 );
 
 useHead({
-  title: page.value?.data.meta_title,
+  title: "one page website nuxt",
   meta: [
     {
       name: "description",
