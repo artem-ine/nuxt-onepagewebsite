@@ -29,9 +29,15 @@ defineProps(
 <style>
 .article{
   margin: 10px;
+  padding: 5px;
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.title{
+  text-transform: capitalize;
+  font-weight: bold;
 }
 
 .article-image{
