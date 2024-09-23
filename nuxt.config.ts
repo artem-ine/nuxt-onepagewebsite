@@ -6,6 +6,20 @@ export default defineNuxtConfig({
   modules: ["@nuxtjs/prismic"],
 
   prismic: {
-    endpoint: apiEndpoint || repositoryName
-  }
+    endpoint: repositoryName,
+    preview: '/api/preview',
+    clientConfig: {
+      routes: [
+        {
+          type: "home",
+          uid: "home",
+          path: "/",
+        },
+        {
+          type: "article",
+          path: "/:uid",
+        },
+      ]
+    }
+  },
 })
