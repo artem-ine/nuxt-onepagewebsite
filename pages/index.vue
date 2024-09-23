@@ -18,9 +18,11 @@ useHead({
 </script>
 
 <template>
-  <SliceZone
-    wrapper="main"
-    :slices="page?.data.slices ?? []"
-    :components="components"
-  />
+  <NuxtLayout>
+    <SliceZone
+      wrapper="main"
+      :slices="page?.data.slices ?? []"
+      :components="components"
+    />
+  </NuxtLayout>
 </template>
