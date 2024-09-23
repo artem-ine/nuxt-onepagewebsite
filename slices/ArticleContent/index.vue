@@ -18,10 +18,10 @@ defineProps(
     :data-slice-type="slice.slice_type"
     :data-slice-variation="slice.variation"
   class="article">
-  <span class="title">{{ slice.primary.article_title }}</span>
-  <PrismicRichText :field="slice.primary.article_description" class="description" />
-  <PrismicImage :field="slice.primary.article_image" :imgix-params="{ sat: -30 }" class="article-image" />
-  {{ slice.primary.article_date }}
+    <span class="title">{{ slice.primary.article_title }}</span>
+    <PrismicRichText :field="slice.primary.article_description" class="description" />
+    <PrismicImage :field="slice.primary.article_image" :imgix-params="{ sat: -30 }" class="article-image" />
+    <span class="date">{{ slice.primary.article_date }}</span>
   </section>
 </template>
 
@@ -38,6 +38,11 @@ defineProps(
 .title{
   text-transform: capitalize;
   font-weight: bold;
+}
+
+.date{
+  margin-top: 3px;
+  align-self: baseline;
 }
 
 .article-image{
