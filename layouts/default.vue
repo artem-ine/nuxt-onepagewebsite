@@ -1,24 +1,22 @@
 <script setup lang="ts">
 import { components } from "~/slices";
 
+const { locale, setLocale } = useI18n()
 const prismic = usePrismic();
 const { data: page } = useAsyncData("[navigation]", () =>
-  prismic.client.getSingle("navigation"),
+  prismic.client.getSingle("navigation", { lang: locale.value }),
 );
-
-const { locale, setLocale } = useI18n()
 
 </script>
 
 <template>
-      <div>
-      <button @click="setLocale('en-us')">en</button>
-      <button @click="setLocale('fr-fr')">fr</button>
+    <div>
+      <button v-for="alt in page?.alternate_languages" @click="setLocale(alt.lang)">{{alt.lang}}</button>
     </div>
   <SliceZone
     wrapper="main"
     :slices="page?.data.slices ?? []"
     :components="components"
-  />
+  /> 
   <slot />
 </template>
