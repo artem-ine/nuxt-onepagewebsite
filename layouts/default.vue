@@ -11,12 +11,10 @@ const { locale, setLocale } = useI18n()
 </script>
 
 <template>
-    <div>
-    <div>
+      <div>
       <button @click="setLocale('en-us')">en</button>
       <button @click="setLocale('fr-fr')">fr</button>
     </div>
-  </div>
   <SliceZone
     wrapper="main"
     :slices="page?.data.slices ?? []"
