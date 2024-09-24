@@ -1,9 +1,14 @@
 import { repositoryName } from "./slicemachine.config.json";
-// https://nuxt.com/docs/api/configuration/nuxt-config
+
 export default defineNuxtConfig({
   compatibilityDate: '2024-04-03',
   devtools: { enabled: true },
-  modules: ["@nuxtjs/prismic"],
+  modules: ["@nuxtjs/i18n", "@nuxtjs/prismic"],
+  
+  i18n: {
+    locales: ['en-us', 'fr-fr'],
+    defaultLocale: 'en-us'
+  },
 
   prismic: {
     endpoint: repositoryName,
@@ -12,11 +17,11 @@ export default defineNuxtConfig({
       routes: [
         {
           type: "home",
-          path: "/",
+          path: "/:lang?",
         },
         {
           type: "article",
-          path: "/:uid",
+          path: "/:lang?/:uid",
         },
       ]
     }

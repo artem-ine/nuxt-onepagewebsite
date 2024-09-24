@@ -7,7 +7,7 @@ const { data: page } = useAsyncData("[home]", () =>
 );
 
 useHead({
-  title: "one page website nuxt",
+  title: "nuxt-onepagewebsite",
   meta: [
     {
       name: "description",
@@ -15,6 +15,8 @@ useHead({
     },
   ],
 });
+
+
 </script>
 
 <template>
