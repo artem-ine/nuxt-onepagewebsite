@@ -17,6 +17,7 @@ const serializer: HTMLRichTextMapSerializer = {
   preformatted: ({ children }) => `<code>${children}</code>`
 }
 
+
 </script>
 
 <template>
@@ -27,7 +28,7 @@ const serializer: HTMLRichTextMapSerializer = {
     <span class="title">{{ slice.primary.article_title }}</span>
     <PrismicRichText :field="slice.primary.article_description" :html-serializer="serializer" class="description" />
     <PrismicImage :field="slice.primary.article_image" :imgix-params="{ sat: -30 }" class="article-image" />
-    <span class="date">{{ slice.primary.article_date }}</span>
+    <span class="date">{{ $prismic.asDate(slice.primary.article_date)?.toLocaleDateString('fr-FR') }}</span>
   </section>
 </template>
 
@@ -47,7 +48,7 @@ const serializer: HTMLRichTextMapSerializer = {
 }
 
 .date{
-  margin-top: 3px;
+  margin-top: 5px;
   align-self: baseline;
 }
 
