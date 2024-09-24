@@ -11,7 +11,7 @@ const { data: page } = useAsyncData("[navigation]", () =>
 
 <template>
     <div>
-      <button v-for="alt in page?.alternate_languages" @click="setLocale(alt.lang)">{{alt.lang}}</button>
+      <button v-for="(alt, i) in page?.alternate_languages" :key="i" @click="setLocale(alt.lang)">{{alt.lang}}</button>
     </div>
   <SliceZone
     wrapper="main"

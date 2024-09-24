@@ -11,6 +11,8 @@ defineProps(
     "context",
   ]),
 );
+
+const { locale } = useI18n();
 </script>
 
 <template>
@@ -19,10 +21,10 @@ defineProps(
     :data-slice-variation="slice.variation"
     class="navbar"
   >
-  <PrismicLink :field="slice.primary.first_link" class="link">home</PrismicLink>
-  <PrismicLink :field="slice.primary.second_link" class="link">lorem ipsum</PrismicLink>
-  <PrismicLink :field="slice.primary.third_link" class="link">sed ut</PrismicLink>
-  <PrismicLink :field="slice.primary.fourth_link" class="link">at vero</PrismicLink>
+  <PrismicLink :field="slice.primary.first_link" class="link" :locale="locale">home</PrismicLink>
+  <PrismicLink :field="slice.primary.second_link" class="link" :locale="locale">lorem ipsum</PrismicLink>
+  <PrismicLink :field="slice.primary.third_link" class="link" :locale="locale">sed ut</PrismicLink>
+  <PrismicLink :field="slice.primary.fourth_link" class="link" :locale="locale">at vero</PrismicLink>
   </section>
 </template>
 

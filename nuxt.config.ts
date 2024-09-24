@@ -7,7 +7,7 @@ export default defineNuxtConfig({
   
   i18n: {
     locales: ['en-us', 'fr-fr'],
-    defaultLocale: 'en-us'
+    defaultLocale: 'en-us',
   },
 
   prismic: {
