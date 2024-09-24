@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { type Content } from "@prismicio/client";
+import { type HTMLRichTextMapSerializer } from '@prismicio/client'
 
 // The array passed to `getSliceComponentProps` is purely optional.
 // Consider it as a visual hint for you when templating your slice.
@@ -11,6 +12,11 @@ defineProps(
     "context",
   ]),
 );
+
+const serializer: HTMLRichTextMapSerializer = {
+  preformatted: ({ children }) => `<code>${children}</code>`
+}
+
 </script>
 
 <template>
@@ -19,7 +25,7 @@ defineProps(
     :data-slice-variation="slice.variation"
   class="article">
     <span class="title">{{ slice.primary.article_title }}</span>
-    <PrismicRichText :field="slice.primary.article_description" class="description" />
+    <PrismicRichText :field="slice.primary.article_description" :html-serializer="serializer" class="description" />
     <PrismicImage :field="slice.primary.article_image" :imgix-params="{ sat: -30 }" class="article-image" />
     <span class="date">{{ slice.primary.article_date }}</span>
   </section>
@@ -48,4 +54,5 @@ defineProps(
 .article-image{
   width: 100%
 }
+
 </style>

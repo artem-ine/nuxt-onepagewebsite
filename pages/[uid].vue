@@ -17,10 +17,6 @@ useHead({
   ],
 });
 
-const serializer = {
-  preformatted: ({ children }) => `<code>${children}</code>`
-}
-
 
 </script>
 
@@ -29,6 +25,5 @@ const serializer = {
     wrapper="main"
     :slices="page?.data.slices ?? []"
     :components="components"
-    :html-serializer="serializer"
   />
 </template>
