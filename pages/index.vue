@@ -21,9 +21,11 @@ useHead({
 </script>
 
 <template>
+  <div>
     <SliceZone
       wrapper="main"
       :slices="page?.data.slices ?? []"
       :components="components"
     />
+  </div>
 </template>
